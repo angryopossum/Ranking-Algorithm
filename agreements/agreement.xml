@@ -1,0 +1,10 @@
+<Agreement version='1.0'>
+  <id></id>
+  <initiator>123</initiator>
+  <follower>123</follower>
+  <body>Agreement</body>
+  <Signature>
+   <initiator_signature></initiator_signature>
+   <follower_signature></follower_signature>
+ </Signature>
+</Agreement>
