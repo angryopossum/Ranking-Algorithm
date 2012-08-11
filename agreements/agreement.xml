@@ -1,7 +1,7 @@
 <Agreement version='1.0'>
   <id></id>
-  <initiator>123</initiator>
-  <follower>123</follower>
+  <initiator>A</initiator>
+  <follower>B</follower>
   <body>Agreement</body>
   <Signature>
    <initiator_signature></initiator_signature>
