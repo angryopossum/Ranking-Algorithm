@@ -4,6 +4,7 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require '../lib/color/color_monkey_patch'
 require '../lib/agrs/agrs_xml'
+require '../lib/algorithm/algorithm'
 require 'yaml'
 
 config = YAML::load(open('../config.yml'))
@@ -27,10 +28,10 @@ when "-c"
   rank = AgrsXML.new 
   @dir = "#{config['agreements_dir']}/*"
   r = rank.agrs_dir(@dir)
+  to_algorithm = Algorithm.new
 
-  r.each do |rank_2| 
-   print "#{rank_2[1][0].green}:#{rank_2[1][1].green42}:#{rank_2[1][2].green}:#{rank_2[1][3].green42}\n"
-  end
+
+   to_algorithm.simple(r) 
 
 when "-a"
   puts "called stop".pink
