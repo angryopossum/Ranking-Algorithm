@@ -4,6 +4,10 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require '../lib/color/color_monkey_patch'
 require '../lib/agrs/agrs_xml'
+require 'yaml'
+
+config = YAML::load(open('../config.yml'))
+
 
 
 def parse_options
@@ -21,8 +25,8 @@ end
 case ARGV[0]
 when "-c"
   rank = AgrsXML.new 
-  dir = "../agreements/*"
-  r = rank.agrs_dir(dir)
+  @dir = "#{config['agreements_dir']}/*"
+  r = rank.agrs_dir(@dir)
 
   r.each do |rank_2| 
    print "#{rank_2[1][0]}:#{rank_2[1][1]}\n".green
