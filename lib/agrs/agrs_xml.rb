@@ -13,7 +13,9 @@ class AgrsXML
   root = doc.root
   rank_arr = {}
   rank_arr[0] = root.elements['initiator'].text
-  rank_arr[1] = root.elements['follower'].text
+  rank_arr[1] = root.elements['initiator_score'].text
+  rank_arr[2] = root.elements['follower'].text
+  rank_arr[3] = root.elements['follower_score'].text
   return  rank_arr
  end
 
