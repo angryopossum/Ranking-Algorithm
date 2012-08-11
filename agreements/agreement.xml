@@ -2,6 +2,8 @@
   <id></id>
   <initiator>A</initiator>
   <follower>B</follower>
+  <initiator_score>5</initiator_score>
+  <follower_score>3</follower_score>
   <body>Agreement</body>
   <Signature>
    <initiator_signature></initiator_signature>
