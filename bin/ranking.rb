@@ -29,7 +29,7 @@ when "-c"
   r = rank.agrs_dir(@dir)
 
   r.each do |rank_2| 
-   print "#{rank_2[1][0].green}:#{rank_2[1][1].pink}:#{rank_2[1][2].green}:#{rank_2[1][3].pink}\n"
+   print "#{rank_2[1][0].green}:#{rank_2[1][1].green42}:#{rank_2[1][2].green}:#{rank_2[1][3].green42}\n"
   end
 
 when "-a"
