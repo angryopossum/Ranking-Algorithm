@@ -8,6 +8,9 @@ Getting started
 Create keys
 ----------------
 Генерация Частного ключа 
-openssl genrsa -out privat.key 1024
+ 
+	openssl genrsa -out privat.key 1024
+
 Генерация Пукбличного ключа
-openssl rsa -in privat.key -pubout -out public.key
+
+ openssl rsa -in privat.key -pubout -out public.key
