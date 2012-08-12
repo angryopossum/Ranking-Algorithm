@@ -11,6 +11,7 @@ Create keys
  
 	openssl genrsa -out privat.key 1024
 
-Генерация Пукбличного ключа
+Генерация Публичного ключа
 
- openssl rsa -in privat.key -pubout -out public.key
+	 openssl rsa -in privat.key -pubout -out public.key
+
