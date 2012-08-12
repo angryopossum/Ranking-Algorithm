@@ -1,5 +1,6 @@
 <Agreement version='1.0'>
   <id></id>
+  <category>1.1.000</category>
   <initiator>A</initiator>
   <follower>B</follower>
   <initiator_score>5</initiator_score>

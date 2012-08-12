@@ -2,9 +2,9 @@
   <id></id>
   <category>1.1.000</category>
   <initiator>B</initiator>
-  <follower>A</follower>
-  <initiator_score>1</initiator_score>
-  <follower_score>2</follower_score>
+  <follower>D</follower>
+  <initiator_score>3</initiator_score>
+  <follower_score>4</follower_score>
   <body>Agreement</body>
   <Signature>
    <initiator_signature></initiator_signature>
