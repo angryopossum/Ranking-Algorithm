@@ -13,5 +13,12 @@ Create keys
 
 Генерация Публичного ключа
 
-	 openssl rsa -in privat.key -pubout -out public.key
+	openssl rsa -in privat.key -pubout -out public.key
+
+License
+-------
+
+Ranking-Algorithm is released under the MIT license:
+
+   * www.opensource.org/licenses/MIT
 

@@ -4,6 +4,7 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require '../lib/color/color_monkey_patch'
 require '../lib/agrs/agrs_xml'
+require '../lib/agrs/agrs_ssl'
 require '../lib/algorithm/algorithm'
 require 'yaml'
 
@@ -28,10 +29,19 @@ when "-c"
   rank = AgrsXML.new 
   @dir = "#{config['agreements_dir']}/*"
   r = rank.agrs_dir(@dir)
-  to_algorithm = Algorithm.new
+  #to_algorithm = Algorithm.new
 
 
-   to_algorithm.simple(r) 
+   #to_algorithm.simple(r)
+
+   @i_key = "keys/public/A_public.key"
+   @f_key = "keys/public/B_public.key"
+   @ca_key = "keys/public/CA_public.key"
+
+   agrs_check = AgrsSSL.new
+   agrs_check.check_certificate(r,@i_key,@f_key,@ca_key)
+
+ 
 
 when "-a"
   puts "called stop".pink

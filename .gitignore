@@ -9,6 +9,7 @@ pkg
 rdoc
 spec/reports
 keys/private
+scripts
 test/tmp
 test/version_tmp
 tmp
