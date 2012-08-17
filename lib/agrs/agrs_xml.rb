@@ -7,7 +7,8 @@ require "rexml/document"
 class AgrsXML
 
  def agrs_to_arr (f)
-
+ # Формирование массива из xml документов 
+  
   file = File.new(f)
   doc = REXML::Document.new file
   root = doc.root
