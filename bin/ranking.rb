@@ -56,20 +56,21 @@ when "-c"
   ri = Hash.new
   rf = Hash.new
 
-  r.each do |i|
+
+  r.each do |r|
   
    @initiator = r[1][3]
    @follower = r[1][5]
    @sf =  r[1][6].to_i
    @si =  r[1][4]
 
-
    if !ri.has_key?(@initiator) then 
 
      ri[@initiator] = Array.new
      ri[@initiator] = [1,0,0,0,0,0]
 
- end
+  end
+
    if !rf.has_key?(@follower)  then
  
      rf[@follower] = Array.new
