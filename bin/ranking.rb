@@ -6,6 +6,7 @@ require '../lib/color/color_monkey_patch'
 require '../lib/agrs/agrs_xml'
 require '../lib/agrs/agrs_ssl'
 require '../lib/algorithm/algorithm'
+require '../lib/visualization/visualization'
 require 'yaml'
 
 config = YAML::load(open('../config.yml'))
@@ -91,6 +92,14 @@ when "-c"
    print "\n"
 
   end
+
+vis = RankingVisualization.new
+print "Initiator ranking table:\n"
+print "------------------------\n"
+vis.ranking_print(ri)
+print "Follower ranking table:\n"
+print "------------------------\n"
+vis.ranking_print(rf)
 
 when "-a"
   puts "called stop".pink
