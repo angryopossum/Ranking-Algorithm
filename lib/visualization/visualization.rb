@@ -1,7 +1,5 @@
 #! /usr/bin/env ruby
 
-#require "rexml/document"
-
 class RankingVisualization
 
  def ranking_print (rating)
@@ -9,7 +7,7 @@ class RankingVisualization
   @rating = rating
 
   @rating.keys.each do |k|
-   print "#{k}:#{@rating[k][0]}\n"
+   print "#{k.green42}:#{@rating[k][0].to_s.green}\n"
   end
 
  end
