@@ -93,8 +93,9 @@ when "-c"
 
   end
 
-vis = RankingVisualization.new
-vis.ranking_print(ri,rf)
+ # Визуализация рейтинга 
+ vis = RankingVisualization.new
+ vis.ranking_print(ri,rf)
 
 when "-a"
   puts "called stop".pink
