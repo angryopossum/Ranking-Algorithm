@@ -94,8 +94,6 @@ when "-c"
   end
 
 vis = RankingVisualization.new
-print "id (ri/rf)\n"
-print "------------\n"
 vis.ranking_print(ri,rf)
 
 when "-a"
