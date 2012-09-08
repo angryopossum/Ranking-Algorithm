@@ -25,7 +25,7 @@ end
 
 
 case ARGV[0]
-when "-c"
+when "-s","show"
   rank = AgrsXML.new 
   @dir = "#{config['agreements_dir']}/*"
   

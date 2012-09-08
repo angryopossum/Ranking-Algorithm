@@ -28,7 +28,7 @@ class RankingVisualization
    @super_ranking[k][1] = rf[k][0]
   end
 
-  print "id (ri/rf)\n"
+  print "ID (Ri/Rf)\n"
   print "------------\n"
 
 
