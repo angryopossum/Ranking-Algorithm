@@ -2,14 +2,35 @@
 
 class RankingVisualization
 
- def ranking_print (rating)
+ def ranking_print (ri,rf)
 
-  @rating = rating
+  @ri = ri
+  @rf = rf
+  @super_ranking = {}
 
-  @rating.keys.each do |k|
-   print "#{k.green42}:#{@rating[k][0].to_s.green}\n"
+  @ri.keys.each do |k|
+
+    if !@super_ranking.has_key?(k) then
+      @super_ranking[k] = Array.new
+      @super_ranking[k] = [0,0]
+    end
+
+    @super_ranking[k][0] = ri[k][0] 
   end
 
+  @rf.keys.each do |k|
+
+    if !@super_ranking.has_key?(k) then
+      @super_ranking[k] = Array.new
+      @super_ranking[k] = [0,0]
+    end
+
+   @super_ranking[k][1] = rf[k][0]
+  end
+
+  @super_ranking.keys.sort.each do |k|
+   print "#{k.green42}: (#{@super_ranking[k][0].to_s.green}/#{@super_ranking[k][1].to_s.green})\n"
+  end
  end
 
 end 

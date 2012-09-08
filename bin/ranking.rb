@@ -94,12 +94,9 @@ when "-c"
   end
 
 vis = RankingVisualization.new
-print "Initiator ranking table:\n"
-print "------------------------\n"
-vis.ranking_print(ri)
-print "Follower ranking table:\n"
-print "------------------------\n"
-vis.ranking_print(rf)
+print "id (ri/rf)\n"
+print "------------\n"
+vis.ranking_print(ri,rf)
 
 when "-a"
   puts "called stop".pink
