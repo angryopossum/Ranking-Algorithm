@@ -35,4 +35,56 @@ class AgrsXML
  return  rank_table
 end
 
+ def  get_rating (dir)
+  
+ @dir =dir
+ r = agrs_dir(@dir)
+ alg = SuperSecretReputationRankingAlgorithm.new
+ 
+  ri = Hash.new
+  rf = Hash.new
+
+
+  r.each do |r|
+
+   @initiator = r[1][3]
+   @follower = r[1][5]
+   @sf =  r[1][6].to_i
+   @si =  r[1][4]
+
+   if !ri.has_key?(@initiator) then
+
+     ri[@initiator] = Array.new
+     ri[@initiator] = [1,0,0,0,0,0]
+
+  end
+
+   if !rf.has_key?(@follower)  then
+
+     rf[@follower] = Array.new
+     rf[@follower] = [1,0,0,0,0,0]
+
+  end
+
+  # Формирование новых рейтингов 
+   ri = alg.calculate(@initiator,@follower,@sf,ri,rf)
+   rf = alg.calculate(@follower,@initiator,@si,rf,ri)
+
+   # Обновление счетчиков оценок 
+   ri = alg.renew_score_counter(@initiator,@si,ri)
+   rf = alg.renew_score_counter(@follower,@sf,rf)
+
+  end
+
+  @rating = Array.new
+  @rating[0] = ri
+  @rating[1] = rf
+
+
+  return @rating
+
+ end
+
+
+
 end 

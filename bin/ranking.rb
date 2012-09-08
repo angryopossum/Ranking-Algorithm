@@ -28,12 +28,8 @@ case ARGV[0]
 when "-c"
   rank = AgrsXML.new 
   @dir = "#{config['agreements_dir']}/*"
-  r = rank.agrs_dir(@dir)
-
-  alg = SuperSecretReputationRankingAlgorithm.new
   
- # 1. Проверка файлов на корректность
- # 2. Вычисление рейтинга 
+  # Cтруктура массива ri  
   # r[0] = number
   # r[1][0] = id
   # r[1][1] = category
@@ -43,7 +39,7 @@ when "-c"
   # r[1][5] = Follower
   # r[1][6] = Follower score
 
-  # Фрмируем два новых массива ri и rf
+  # Формируем два новых массива ri и rf
   # ri[0] = id инициатора
   # ri[1][1] = рейтинг инициатора на текущий момент согласно алгоритму
   # ri[1][2] = кол-во оценок 1 сделаных другим пользователям, в качестве инициатора
@@ -52,50 +48,17 @@ when "-c"
   # ri[1][5] = кол-во оценок 4 сделаных другим пользователям, в качестве инициатора
   # ri[1][6] = кол-во оценок 5 сделаных другим пользователям, в качестве инициатора
  
- # Структура Rf аналогична Ri
-
-  ri = Hash.new
-  rf = Hash.new
+ # Структура rf аналогична ri
 
 
-  r.each do |r|
-  
-   @initiator = r[1][3]
-   @follower = r[1][5]
-   @sf =  r[1][6].to_i
-   @si =  r[1][4]
+ # Получение массива состоящего из двух хешей рейтингов ri и rf 
+ @two_ratings = rank.get_rating(@dir)
+ @ri = @two_ratings[0]
+ @rf = @two_ratings[1]
 
-   if !ri.has_key?(@initiator) then 
-
-     ri[@initiator] = Array.new
-     ri[@initiator] = [1,0,0,0,0,0]
-
-  end
-
-   if !rf.has_key?(@follower)  then
- 
-     rf[@follower] = Array.new
-     rf[@follower] = [1,0,0,0,0,0]
-
-  end
-
-   # Формирование новых рейтингов 
-   ri = alg.calculate(@initiator,@follower,@sf,ri,rf)
-   rf = alg.calculate(@follower,@initiator,@si,rf,ri)
-
-   # Обновление счетчиков оценок 
-   ri = alg.renew_score_counter(@initiator,@si,ri)
-   rf = alg.renew_score_counter(@follower,@sf,rf)
-
- #   print "#{@initiator}:#{ri[@initiator][0]}:#{ri[@initiator][1]}:#{ri[@initiator][2]}:#{ri[@initiator][3]}:#{ri[@initiator][4]}:#{ri[@initiator][5]}\n"
- #  print "#{@follower}:#{rf[@follower][0]}:#{rf[@follower][1]}:#{rf[@follower][2]}:#{rf[@follower][3]}:#{rf[@follower][4]}:#{rf[@follower][5]}\n"
- #  print "\n"
-
-  end
-
- # Визуализация рейтинга 
+ # Визуализация рейтингов 
  vis = RankingVisualization.new
- vis.ranking_print(ri,rf)
+ vis.ranking_print(@ri,@rf)
 
 when "-a"
   puts "called stop".pink
