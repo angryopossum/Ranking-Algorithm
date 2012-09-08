@@ -87,9 +87,9 @@ when "-c"
    ri = alg.renew_score_counter(@initiator,@si,ri)
    rf = alg.renew_score_counter(@follower,@sf,rf)
 
-   print "#{@initiator}:#{ri[@initiator][0]}:#{ri[@initiator][1]}:#{ri[@initiator][2]}:#{ri[@initiator][3]}:#{ri[@initiator][4]}:#{ri[@initiator][5]}\n"
-   print "#{@follower}:#{rf[@follower][0]}:#{rf[@follower][1]}:#{rf[@follower][2]}:#{rf[@follower][3]}:#{rf[@follower][4]}:#{rf[@follower][5]}\n"
-   print "\n"
+ #   print "#{@initiator}:#{ri[@initiator][0]}:#{ri[@initiator][1]}:#{ri[@initiator][2]}:#{ri[@initiator][3]}:#{ri[@initiator][4]}:#{ri[@initiator][5]}\n"
+ #  print "#{@follower}:#{rf[@follower][0]}:#{rf[@follower][1]}:#{rf[@follower][2]}:#{rf[@follower][3]}:#{rf[@follower][4]}:#{rf[@follower][5]}\n"
+ #  print "\n"
 
   end
 

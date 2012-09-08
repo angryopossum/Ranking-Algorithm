@@ -33,7 +33,7 @@ class RankingVisualization
 
 
   @super_ranking.keys.sort.each do |k|
-   print "#{k.green42}: (#{@super_ranking[k][0].to_s.green}/#{@super_ranking[k][1].to_s.green})\n"
+   print "#{k.green42}: (#{@super_ranking[k][0].to_s.green}/#{@super_ranking[k][1].to_s.yellow192})\n"
   end
  end
 

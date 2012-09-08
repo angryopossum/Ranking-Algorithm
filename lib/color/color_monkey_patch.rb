@@ -13,7 +13,11 @@ class String
   end
   def yellow
      colorize(self, 226)
- end
+  end
+ def yellow192
+     colorize(self, 192)
+  end
+
  def green42
     colorize(self, 42)
   end
