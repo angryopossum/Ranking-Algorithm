@@ -5,7 +5,7 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require '../lib/color/color_monkey_patch'
 require '../lib/agrs/agrs_xml'
 require '../lib/agrs/agrs_ssl'
-require '../lib/algorithm/algorithm'
+require '../lib/algorithm/ssrra'
 require '../lib/visualization/visualization'
 require 'yaml'
 
@@ -30,7 +30,7 @@ when "-c"
   @dir = "#{config['agreements_dir']}/*"
   r = rank.agrs_dir(@dir)
 
-  alg = Algorithm.new
+  alg = SuperSecretReputationRankingAlgorithm.new
   
  # 1. Проверка файлов на корректность
  # 2. Вычисление рейтинга 
@@ -80,8 +80,8 @@ when "-c"
   end
 
    # Формирование новых рейтингов 
-   ri = alg.new_rating(@initiator,@follower,@sf,ri,rf)
-   rf = alg.new_rating(@follower,@initiator,@si,rf,ri)
+   ri = alg.calculate(@initiator,@follower,@sf,ri,rf)
+   rf = alg.calculate(@follower,@initiator,@si,rf,ri)
 
    # Обновление счетчиков оценок 
    ri = alg.renew_score_counter(@initiator,@si,ri)
