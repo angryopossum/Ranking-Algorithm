@@ -56,9 +56,26 @@ when "-s","show"
  @ri = @two_ratings[0]
  @rf = @two_ratings[1]
 
+ print @two_ratings
+ print "\n"
+ print  @ri
+ print "\n"
+ print  @rf
  # Визуализация рейтингов 
  vis = RankingVisualization.new
  vis.ranking_print(@ri,@rf)
+
+when "-ss","short"
+ rank = AgrsXML.new
+ @dir = "#{config['agreements_dir']}/*"
+
+ @two_ratings = rank.get_rating(@dir)
+ @ri = @two_ratings[0]
+ @rf = @two_ratings[1]
+  
+ # Визуализация рейтингов 
+ vis = RankingVisualization.new
+ vis.ranking_print_short(@ri,@rf)
 
 when "-a"
   puts "called stop".pink

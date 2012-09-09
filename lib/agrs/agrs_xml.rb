@@ -50,7 +50,7 @@ end
    @initiator = r[1][3]
    @follower = r[1][5]
    @sf =  r[1][6].to_i
-   @si =  r[1][4]
+   @si =  r[1][4].to_i
 
    if !ri.has_key?(@initiator) then
 
@@ -80,11 +80,8 @@ end
   @rating[0] = ri
   @rating[1] = rf
 
-
   return @rating
 
  end
 
-
-
-end 
+end
