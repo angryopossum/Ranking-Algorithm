@@ -19,7 +19,7 @@ class SuperSecretReputationRankingAlgorithm
  end
 
  def sum_rating (user,score,rating)
-  return score+rating[user][0]
+   return score*Math.log(rating[user][0]).round
  end
 
  def renew_score_counter (user,score,rating)

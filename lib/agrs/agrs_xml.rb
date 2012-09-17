@@ -3,7 +3,6 @@
 require "rexml/document"
 
 
-
 class AgrsXML
 
  def agrs_to_arr (f)
@@ -35,7 +34,7 @@ class AgrsXML
  return  rank_table
 end
 
- def  get_rating (dir)
+ def get_rating (dir)
   
  @dir =dir
  r = agrs_dir(@dir)
