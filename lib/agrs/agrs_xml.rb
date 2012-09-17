@@ -3,7 +3,6 @@
 require "rexml/document"
 
 
-
 class AgrsXML
 
  def agrs_to_arr (f)
@@ -55,14 +54,14 @@ end
    if !ri.has_key?(@initiator) then
 
      ri[@initiator] = Array.new
-     ri[@initiator] = [1,0,0,0,0,0]
+     ri[@initiator] = [2,0,0,0,0,0]
 
   end
 
    if !rf.has_key?(@follower)  then
 
      rf[@follower] = Array.new
-     rf[@follower] = [1,0,0,0,0,0]
+     rf[@follower] = [2,0,0,0,0,0]
 
   end
 
