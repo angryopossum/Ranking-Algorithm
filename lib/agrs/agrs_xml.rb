@@ -34,7 +34,7 @@ class AgrsXML
  return  rank_table
 end
 
- def get_rating (dir)
+ def  get_rating (dir)
   
  @dir =dir
  r = agrs_dir(@dir)
@@ -54,14 +54,14 @@ end
    if !ri.has_key?(@initiator) then
 
      ri[@initiator] = Array.new
-     ri[@initiator] = [1,0,0,0,0,0]
+     ri[@initiator] = [2,0,0,0,0,0]
 
   end
 
    if !rf.has_key?(@follower)  then
 
      rf[@follower] = Array.new
-     rf[@follower] = [1,0,0,0,0,0]
+     rf[@follower] = [2,0,0,0,0,0]
 
   end
 

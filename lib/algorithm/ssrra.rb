@@ -14,12 +14,26 @@ class SuperSecretReputationRankingAlgorithm
   #Вычисляем новый рейтинг на основании старого рейтинга и оценки
   @rating_1[@user_1][0] = @rating_1[@user_1][0] + sum_rating(@user_2,@score,@rating_2)
 
+   if  @rating_1[@user_1][0] < 1 then @rating_1[@user_1][0] = 1 end 
   return @rating_1
  
  end
 
  def sum_rating (user,score,rating)
-   return score*Math.log(rating[user][0]).round
+  
+  case score
+   when 1 then @s = -2 
+   when 2 then @s = -1
+   when 3 then @s = 0
+   when 4 then @s = 1
+   when 5 then @s = 2
+  end
+
+  # рейтинг не может быть меньше 1
+  #if rating[user][0] < 1 then rating[user][0] = 1 end
+
+  return @s*Math.log(rating[user][0]).round
+
  end
 
  def renew_score_counter (user,score,rating)
