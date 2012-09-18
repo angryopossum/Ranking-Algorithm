@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+ <Agreement version='1.0'>
+  <id>86</id>
+  <date>17.09.2012</date>
+  <category>0</category>
+  <initiator>C</initiator>
+  <follower>D</follower>
+  <initiator_sign_date>17.09.2012</initiator_sign_date>
+  <follower_sign_date>17.09.2012</follower_sign_date>
+  <initiator_score>2</initiator_score>
+  <follower_score>2</follower_score>
+  <body/>
+  <Signature>
+   <initiator_signature/>
+   <follower_signature/>
+ </Signature>
+</Agreement>
+  

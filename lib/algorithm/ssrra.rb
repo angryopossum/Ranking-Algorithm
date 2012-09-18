@@ -12,9 +12,13 @@ class SuperSecretReputationRankingAlgorithm
   @rating_2 = rating_2
 
   #Вычисляем новый рейтинг на основании старого рейтинга и оценки
-  @rating_1[@user_1][0] = @rating_1[@user_1][0] + sum_rating(@user_2,@score,@rating_2)
+  @rating_1[@user_1][0] = @rating_1[@user_1][0] + sum_rating(@user_2,@score,@rating_2) 
 
-   if  @rating_1[@user_1][0] < 1 then @rating_1[@user_1][0] = 1 end 
+  # рейтинг не может быть меньше 1
+  if  @rating_1[@user_1][0] < 1 then @rating_1[@user_1][0] = 1 end
+ 
+  print "#{user_2}:#{coef(user_2, rating_2)}\n"
+
   return @rating_1
  
  end
@@ -29,12 +33,43 @@ class SuperSecretReputationRankingAlgorithm
    when 5 then @s = 2
   end
 
-  # рейтинг не может быть меньше 1
-  #if rating[user][0] < 1 then rating[user][0] = 1 end
-
   return @s*Math.log(rating[user][0]).round
 
  end
+
+#Дополнительная функция для расчета профилируещего коеффициента
+ def coef_func (y,sum,k)
+  @x = 1
+  (y.to_f-sum*k).round.times{|x| @x=@x+@x*2}
+  return @x
+ end
+
+
+ # Профилируещий коеффициент / Profiling factor
+ def coef (user, rating)
+   @c = 0
+   @c1 = 0
+   @c2 = 0
+   @c3 = 0
+   @c4 = 0
+   @c5 = 0
+   @sum = 1
+
+   rating[user][1..5].each{|x| @sum = @sum + x}
+
+   if rating[user][1].to_f/@sum > 0.15 then @c1 = coef_func(rating[user][1],@sum,0.4) end 
+   if rating[user][2].to_f/@sum > 0.25 then @c2 = coef_func(rating[user][2],@sum,0.4) end 
+   if rating[user][3].to_f/@sum > 0.35 then @c3 = coef_func(rating[user][3],@sum,0.4) end 
+   if rating[user][4].to_f/@sum > 0.25 then @c4 = coef_func(rating[user][4],@sum,0.4) end 
+   if rating[user][5].to_f/@sum > 0.15 then @c5 = coef_func(rating[user][5],@sum,0.4) end 
+
+
+   @c = @c1 + @c2 + @c3 + @c4 + @c5
+
+   return @c
+ end
+
+
 
  def renew_score_counter (user,score,rating)
 
