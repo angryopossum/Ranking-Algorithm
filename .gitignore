@@ -14,6 +14,7 @@ scripts
 test/tmp
 test/version_tmp
 tmp
+agreements
 
 # YARD artifacts
 .yardoc
