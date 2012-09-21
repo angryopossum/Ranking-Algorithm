@@ -12,7 +12,8 @@ class SuperSecretReputationRankingAlgorithm
   @rating_2 = rating_2
 
   #Вычисляем новый рейтинг на основании старого рейтинга и оценки
-  @rating_1[@user_1][0] = @rating_1[@user_1][0] + sum_rating(@user_2,@score,@rating_2) 
+  @rating_1[@user_1][0] = @rating_1[@user_1][0] + sum_rating(@user_2,@score,@rating_2)
+  # - (0.1*@rating_1[@user_1][0]*coef(user_2, rating_2)).round 
 
   # рейтинг не может быть меньше 1
   if  @rating_1[@user_1][0] < 1 then @rating_1[@user_1][0] = 1 end
@@ -37,15 +38,15 @@ class SuperSecretReputationRankingAlgorithm
 
  end
 
-#Дополнительная функция для расчета профилируещего коеффициента
+ #Дополнительная функция для расчета профилируещего коеффициента
  def coef_func (y,sum,k)
   @x = 1
   (y.to_f-sum*k).round.times{|x| @x=@x+@x*2}
   return @x
  end
 
- def coef_test(rating,sum)
-  @c =  1-rating/sum
+ def coef_test(rating,sum,k)
+  @c =  k-rating/sum
   return @c.abs
  end
 
@@ -71,11 +72,11 @@ class SuperSecretReputationRankingAlgorithm
    if rating[user][5].to_f/@sum > 0.10 then @c5 = coef_func(rating[user][5],@sum,0.4) end 
 =end
 
-   if rating[user][1].to_f/@sum > 0.10 then @c1 = coef_test(rating[user][1],@sum) end 
-   if rating[user][2].to_f/@sum > 0.20 then @c2 = coef_test(rating[user][2],@sum) end 
-   if rating[user][3].to_f/@sum > 0.65 then @c3 = coef_test(rating[user][3],@sum) end 
-   if rating[user][4].to_f/@sum > 0.20 then @c4 = coef_test(rating[user][4],@sum) end 
-   if rating[user][5].to_f/@sum > 0.10 then @c5 = coef_test(rating[user][5],@sum) end 
+   if rating[user][1].to_f/@sum > 0.10 then @c1 = coef_test(rating[user][1],@sum,0.05) end 
+   if rating[user][2].to_f/@sum > 0.20 then @c2 = coef_test(rating[user][2],@sum,0.15) end 
+   if rating[user][3].to_f/@sum > 0.65 then @c3 = coef_test(rating[user][3],@sum,0.6) end 
+   if rating[user][4].to_f/@sum > 0.20 then @c4 = coef_test(rating[user][4],@sum,0.15) end 
+   if rating[user][5].to_f/@sum > 0.10 then @c5 = coef_test(rating[user][5],@sum,0.05) end 
 
    @c = @c1 + @c2 + @c3 + @c4 + @c5
 
