@@ -36,9 +36,41 @@ class RankingVisualization
   @rf = rf
   @super_ranking = make_ranking(@ri,@rf)
   @m = margins(@ri,@rf)
-  print "--------------------------------------\n"
-  print "ID (Ri/Rf) [1:2:3:4:5][1:2:3:4:5][i/f]\n"
-  print "--------------------------------------\n"
+
+
+  @id_header = "ID"
+  @ri_header = "Ri"
+  @rf_header = "Rf"
+  @s1_header = "1"
+  @s2_header = "2"
+  @s3_header = "3"
+  @s4_header = "4"
+  @s5_header = "5"
+
+  @marg_id = string_margin(@id_header,@m[0]) 
+  @marg_ri = string_margin(@ri_header,@m[1]) 
+  @marg_rf = string_margin(@rf_header,@m[2]) 
+  @marg_score_1 = string_margin(@s1_header,@m[3]) 
+  @marg_score_2 = string_margin(@s2_header,@m[4]) 
+  @marg_score_3 = string_margin(@s3_header,@m[5]) 
+  @marg_score_4 = string_margin(@s4_header,@m[6]) 
+  @marg_score_5 = string_margin(@s5_header,@m[7]) 
+
+  @marg_score_1f = string_margin(@s1_header,@m[8])
+  @marg_score_2f = string_margin(@s2_header,@m[9])
+  @marg_score_3f = string_margin(@s3_header,@m[10])
+  @marg_score_4f = string_margin(@s4_header,@m[11])
+  @marg_score_5f = string_margin(@s5_header,@m[12])
+
+
+
+  @m.inject(0){|r,e| r+e}.times{print "-"}
+  print "-------------------\n"
+  print "#{@id_header}:#@marg_id (#{@ri_header}/#{@rf_header})#{@marg_ri}#{@marg_rf} "
+  print "[#{@s1_header}#{@marg_score_1}:#{@s2_header}#{@marg_score_2}:#{@s3_header}#{@marg_score_3}:#{@s4_header}#{@marg_score_4}:#{@s5_header}#{@marg_score_5}] "
+  print "[#{@s1_header}#{@marg_score_1f}:#{@s2_header}#{@marg_score_2f}:#{@s3_header}#{@marg_score_3f}:#{@s4_header}#{@marg_score_4f}:#{@s5_header}#{@marg_score_5f}]\n"
+  @m.inject(0){|r,e| r+e}.times{print "-"}
+  print "-------------------\n"
 
 
    @super_ranking.keys.sort.each do |k|
@@ -85,6 +117,9 @@ class RankingVisualization
     print "[#{@s1f}#{@marg9}:#{@s2f}#{@marg10}:#{@s3f}#{@marg11}:#{@s4f}#{@marg12}:#{@s5f}#{@marg13}]\n".yellow192
     #print "[#{@total_i}/#{@total_f}]\n".red
   end
+
+  @m.inject(0){|r,e| r+e}.times{print "-"}
+  print "-------------------\n\n"
 
  end
 
@@ -149,6 +184,7 @@ class RankingVisualization
   return @maximum
  end
 
+ # Вставляет необходимое кол-во пробелов
  def string_margin(string,max)
    @string = string
    @max = max
