@@ -2,6 +2,7 @@
 
 #require "rexml/document"
 require 'openssl'
+require "base64"
 
 
 class AgrsSSL
@@ -24,5 +25,41 @@ class AgrsSSL
   return  pkey.sign(digest,data)
 
  end
+
+
+def check_agrs(f)
+
+  @f = f
+
+  file = File.new(@f)
+  doc = REXML::Document.new file
+  root = doc.root
+
+  @id = root.elements['id'].text
+  @category= root.elements['category'].text
+  @date = root.elements['date'].text
+  i = root.elements['initiator'].text
+  @is = root.elements['initiator_score'].text
+  @f = root.elements['follower'].text
+  @fs = root.elements['follower_score'].text
+  @sig_i = root.elements['Signature'].elements['initiator_signature'].text
+  @sig_f = root.elements['Signature'].elements['follower_signature'].text
+
+
+  @pkey_i="../keys/private/#{i}.key"
+  @pub_key_i="../keys/public/#{i}_public.key"
+  @pub_key_f="../keys/public/#{@f}_public.key"
+
+  @data = "#{@id}/#{@date}/#{@category}/#{i}/#{@f}/#{@is}/#{@fs}"
+
+  @check_signature_initiator = check_signature(@pub_key_i,@data,Base64.decode64(@sig_i))
+  @check_signature_follower = check_signature(@pub_key_f,@data,Base64.decode64(@sig_f))
+
+if @check_signature_initiator and @check_signature_follower then return true else return false end
+
+end
+
+
+
 
 end 

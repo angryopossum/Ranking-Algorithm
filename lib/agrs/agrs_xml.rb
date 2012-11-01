@@ -31,22 +31,17 @@ class AgrsXML
   i = 0
   @agrs.each do |filename|
   
+  #rank_table[i] =  agrs_to_arr(filename)
+
+  @c = AgrsSSL.new
+ # print "#{@c.check_agrs(filename)}\n".yellow
+  
+ if @c.check_agrs(filename) then
+
   rank_table[i] =  agrs_to_arr(filename)
-  @id=rank_table[i][0]
-  @date=rank_table[i][2]
-  @category=rank_table[i][1]
-  @i=rank_table[i][3]
-  @f=rank_table[i][5]
-  @is=rank_table[i][4]
-  @fs=rank_table[i][6]
-  @signature_a=rank_table[i][7]
-  @signature_b=rank_table[i][8]
-  @ssl1 = AgrsSSL.new
-  @pkey="../keys/public/A_public.key"
-  @data="#{@id}/#{@date}/#{@category}/#{@i}/#{@f}/#{@is}/#{@fs}"
-  print "#{@ssl1.check_signature(@pkey,@data,Base64.decode64(@signature_a))}\n"
-  #print "#{Base64.decode64(@signature_b)}\n"
   i=i+1
+ end
+
   end
  return  rank_table
 end
