@@ -42,6 +42,7 @@ def check_agrs(f)
   @is = root.elements['initiator_score'].text
   @f = root.elements['follower'].text
   @fs = root.elements['follower_score'].text
+  @body = root.elements['body'].text
   @sig_i = root.elements['Signature'].elements['initiator_signature'].text
   @sig_f = root.elements['Signature'].elements['follower_signature'].text
   @sig_ca = root.elements['Signature'].elements['ca_signature'].text
@@ -52,7 +53,7 @@ def check_agrs(f)
   @pub_key_f="../keys/public/#{@f}_public.key"
   @pub_key_ca="../keys/public/CA_public.key"
 
-  @data = "#{@id}/#{@date}/#{@category}/#{i}/#{@f}/#{@is}/#{@fs}"
+  @data = "#{@id}/#{@date}/#{@category}/#{i}/#{@f}/#{@body}"
 
   @check_signature_initiator = check_signature(@pub_key_i,@data,Base64.decode64(@sig_i))
   @check_signature_follower = check_signature(@pub_key_f,@data,Base64.decode64(@sig_f))
