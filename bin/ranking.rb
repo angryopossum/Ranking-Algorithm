@@ -9,6 +9,8 @@ require '../lib/algorithm/ssrra'
 require '../lib/visualization/visualization'
 require 'yaml'
 
+@begin = Time.now
+
 config = YAML::load(open('../config.yml'))
 
 
@@ -91,3 +93,7 @@ Usage:
 EOF
 end
 
+
+@end = Time.now
+@time_counter = @end - @begin
+print "#{@time_counter.round}\n".yellow
