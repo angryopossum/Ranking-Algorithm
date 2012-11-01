@@ -1,7 +1,8 @@
 #! /usr/bin/env ruby
 
 require "rexml/document"
-
+require "base64"
+require '../lib/agrs/agrs_ssl'
 
 class AgrsXML
 
@@ -19,6 +20,8 @@ class AgrsXML
   rank_arr[4] = root.elements['initiator_score'].text
   rank_arr[5] = root.elements['follower'].text
   rank_arr[6] = root.elements['follower_score'].text
+  rank_arr[7] = root.elements['Signature'].elements['initiator_signature'].text
+  rank_arr[8] = root.elements['Signature'].elements['follower_signature'].text
   return  rank_arr
  end
 
@@ -28,8 +31,18 @@ class AgrsXML
   i = 0
   @agrs.each do |filename|
   
+  #rank_table[i] =  agrs_to_arr(filename)
+
+  @c = AgrsSSL.new
+ # print "#{@c.check_agrs(filename)}\n".yellow
+ 
+
+ # Проверка правильности подписей intiator-a и follower-а 
+ if @c.check_agrs(filename) then
   rank_table[i] =  agrs_to_arr(filename)
   i=i+1
+ end
+
   end
  return  rank_table
 end

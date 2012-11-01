@@ -18,7 +18,7 @@ class SuperSecretReputationRankingAlgorithm
   # рейтинг не может быть меньше 1
   if  @rating_1[@user_1][0] < 1 then @rating_1[@user_1][0] = 1 end
  
-  print "#{user_2}:#{coef(user_2, rating_2)}\n"
+ # print "#{user_2}:#{coef(user_2, rating_2)}\n"
 
   return @rating_1
  
