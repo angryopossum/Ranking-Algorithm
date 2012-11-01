@@ -35,9 +35,10 @@ class AgrsXML
 
   @c = AgrsSSL.new
  # print "#{@c.check_agrs(filename)}\n".yellow
-  
- if @c.check_agrs(filename) then
+ 
 
+ # Проверка правильности подписей intiator-a и follower-а 
+ if @c.check_agrs(filename) then
   rank_table[i] =  agrs_to_arr(filename)
   i=i+1
  end
