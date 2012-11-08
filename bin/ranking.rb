@@ -75,13 +75,12 @@ when "-ss","short"
  vis = RankingVisualization.new
  vis.ranking_print_short(@ri,@rf)
 
+ # Проверка соглашений на валидность
 when "-c"
-  print "======\n"
-  print Dir.pwd
-  print "======\n"
-  @dir = "../agreements/*"
+
+  @dir = "#{config['agreements_dir']}/*"
   @stat  = AgrsCheck.new
-  @stat.get_stat(@dir)
+ print  @stat.get_category(@dir)
 
 else
   puts <<-EOF
