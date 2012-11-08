@@ -38,10 +38,10 @@ class AgrsXML
  
 
  # Проверка правильности подписей intiator-a и follower-а 
- #if @c.check_agrs(filename) then
- # rank_table[i] =  agrs_to_arr(filename)
- # i=i+1
- #end
+ if @c.check_agrs(filename) then
+  rank_table[i] =  agrs_to_arr(filename)
+  i=i+1
+ end
 
   end
  return  rank_table
@@ -95,14 +95,5 @@ end
   return @rating
 
  end
-
- def agrs_by_category (cat,dir)
-  @c = cat  
-  @dir = dir
-   
-  return @cat
- end
-
-
 
 end
