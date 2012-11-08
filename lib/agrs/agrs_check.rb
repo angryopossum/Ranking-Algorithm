@@ -36,5 +36,11 @@ class AgrsCheck
  
   end
 
+ def check_category(cat,dir)
+   @cat = cat
+   @dir =dir  
+  agrs_by_category (@cat,@dir) 
+ end
+
 
 end
