@@ -36,5 +36,17 @@ class AgrsCheck
  
   end
 
+ def check_category (cat)
+  
+  @agrs = {}
+  @agrs[1] = "valid"
+  @agrs[2] = "non-valid" 
+   
+  return @agrs
+ end
+
+
+
+
 
 end
