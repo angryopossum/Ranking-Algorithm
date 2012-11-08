@@ -28,7 +28,7 @@ class AgrsCheck
     @cat_inv = @cat.invert
     @j = 0
     @cat_inv.keys.each do |k|
-      @cat_2[@j] =k
+      @cat_2[@j] = k
       @j=@j+1
     end 
 
@@ -38,8 +38,10 @@ class AgrsCheck
 
  def check_category(cat,dir)
    @cat = cat
-   @dir =dir  
-  agrs_by_category (@cat,@dir) 
+   @dir = dir  
+   @a = AgrsXML.new
+   @c = "15"
+   @a.agrs_by_category(@c,@dir) 
  end
 
 
