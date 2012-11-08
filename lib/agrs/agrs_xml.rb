@@ -99,7 +99,9 @@ end
  def agrs_by_category (cat,dir)
   @c = cat  
   @dir = dir
-   
+  
+  @agrs=agrs_dir(@dir)
+  print @agrs
   return @cat
  end
 
