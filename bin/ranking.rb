@@ -5,6 +5,7 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require '../lib/color/color_monkey_patch'
 require '../lib/agrs/agrs_xml'
 require '../lib/agrs/agrs_ssl'
+require '../lib/agrs/agrs_check'
 require '../lib/algorithm/ssrra'
 require '../lib/visualization/visualization'
 require 'yaml'
@@ -74,8 +75,14 @@ when "-ss","short"
  vis = RankingVisualization.new
  vis.ranking_print_short(@ri,@rf)
 
-when "-a"
-  puts "called stop".pink
+when "-c"
+  print "======\n"
+  print Dir.pwd
+  print "======\n"
+  @dir = "../agreements/*"
+  @stat  = AgrsCheck.new
+  @stat.get_stat(@dir)
+
 else
   puts <<-EOF
 Please provide command name
