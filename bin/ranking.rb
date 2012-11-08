@@ -80,7 +80,10 @@ when "-c"
 
   @dir = "#{config['agreements_dir']}/*"
   @stat  = AgrsCheck.new
- print  @stat.get_category(@dir)
+  @cat =  @stat.get_category(@dir)
+  @stat.check_category(@cat,@dir)
+  
+
 
 else
   puts <<-EOF
