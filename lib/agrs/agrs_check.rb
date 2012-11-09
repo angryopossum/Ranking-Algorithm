@@ -44,14 +44,15 @@ class AgrsCheck
    @a.agrs_by_category(@c,@dir) 
  end
 
- def check_agreement(@dir)
+ def check_agreement(dir) 
+  @dir =dir 
   @invalid_name = {}
-  @agrs = Dir.glob(d)
+  @agrs = Dir.glob(@dir)
   
+   i=0
   @agrs.each do |filename|
 
    @c = AgrsSSL.new
-   i=0
    if !@c.check_agrs(filename) then
       @invalid_name[i] = filename
     i=i+1

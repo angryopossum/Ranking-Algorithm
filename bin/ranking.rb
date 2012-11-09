@@ -82,7 +82,7 @@ when "-c"
   @stat  = AgrsCheck.new
 # @cat =  @stat.get_category(@dir)
 # @stat.check_category(@cat,@dir)
-  
+  print @stat.check_agreement(@dir) 
 
 
 else

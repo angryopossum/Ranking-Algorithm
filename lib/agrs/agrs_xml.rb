@@ -116,11 +116,11 @@ end
   #print @cat_2
 
   @cat_2.find_all{|key,value| value==@ca}.each do |n|
-  print n
+  #print n
   @cat[@k] = n[0]
   @k=@k+1
   end
-  print @cat
+  #print @cat.sort
   return @cat
  end
 
