@@ -103,18 +103,24 @@ end
   @agrs=agrs_dir(@dir)
   #print @agrs
   @j = 0
+ # print @agrs
   @agrs.each do |k|
-   @cat_2[@j] =  k[1][1]
-   @j=@j+1
+   @k = k[1][0]
+   @cat_2[@k] =  k[1][1]
+  # @j=@j+1
   end
   
   @k = 0
   @cat =Array.new
+
+  #print @cat_2
+
   @cat_2.find_all{|key,value| value==@ca}.each do |n|
+  #print n
   @cat[@k] = n[0]
   @k=@k+1
   end
-  print @cat
+  #print @cat.sort
   return @cat
  end
 
